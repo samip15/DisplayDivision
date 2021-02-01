@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/colorAccent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_person"
+        android:background="@drawable/edit_round"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/marks_edit"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:hint="Enter Marks Of The Student"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/ic_send"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="See Your Marks"
+        android:background="@drawable/button_round"
+        android:layout_gravity="center"
+        android:id="@+id/btn_click"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
