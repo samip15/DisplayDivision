@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var editText: EditText
@@ -23,19 +24,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        val marks = editText.text
-        val marksInNumber = Integer.parseInt(marks.toString())
-        when(marksInNumber){
-            in 0..32 -> Toast.makeText(this,"You Are ${EnumMarks.FAIL}",Toast.LENGTH_LONG).show()
-            in 33..40 -> Toast.makeText(this,"You Are ${EnumMarks.PASS}",Toast.LENGTH_LONG).show()
-            in 41..45 -> Toast.makeText(this,"You Are ${EnumMarks.JUSTPASS}",Toast.LENGTH_LONG).show()
-            in 56..79 -> Toast.makeText(this,"You Are ${EnumMarks.FIRSTDIVISION}",Toast.LENGTH_LONG).show()
-            in 51..55 -> Toast.makeText(this,"You Are ${EnumMarks.SECONDDIVISION}",Toast.LENGTH_LONG).show()
-            in 45..50 -> Toast.makeText(this,"You Are ${EnumMarks.THIRDDIVISION}",Toast.LENGTH_LONG).show()
-            in 80..85 -> Toast.makeText(this,"You Are ${EnumMarks.DISTINCTION}",Toast.LENGTH_LONG).show()
-            in 86..95 -> Toast.makeText(this,"You Are ${EnumMarks.FIRST}",Toast.LENGTH_LONG).show()
-            in 95..100 -> Toast.makeText(this,"You Are ${EnumMarks.EXCILLENT}",Toast.LENGTH_LONG).show()
-            else -> Toast.makeText(this,"Marks Out Of Bound",Toast.LENGTH_LONG).show()
+        val marks: String = editText.text.toString()
+        try {
+            val marksInNumber = Integer.parseInt(marks)
+            when(marksInNumber){
+                in 0..32 -> Toast.makeText(this,"You Are ${EnumMarks.FAIL}",Toast.LENGTH_LONG).show()
+                in 33..40 -> Toast.makeText(this,"You Are ${EnumMarks.PASS}",Toast.LENGTH_LONG).show()
+                in 41..45 -> Toast.makeText(this,"You Are ${EnumMarks.JUSTPASS}",Toast.LENGTH_LONG).show()
+                in 56..79 -> Toast.makeText(this,"You Are ${EnumMarks.FIRSTDIVISION}",Toast.LENGTH_LONG).show()
+                in 51..55 -> Toast.makeText(this,"You Are ${EnumMarks.SECONDDIVISION}",Toast.LENGTH_LONG).show()
+                in 45..50 -> Toast.makeText(this,"You Are ${EnumMarks.THIRDDIVISION}",Toast.LENGTH_LONG).show()
+                in 80..85 -> Toast.makeText(this,"You Are ${EnumMarks.DISTINCTION}",Toast.LENGTH_LONG).show()
+                in 86..95 -> Toast.makeText(this,"You Are ${EnumMarks.FIRST}",Toast.LENGTH_LONG).show()
+                in 95..100 -> Toast.makeText(this,"You Are ${EnumMarks.EXCILLENT}",Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(this,"Marks Out Of Bound",Toast.LENGTH_LONG).show()
+            }
+        }catch (e: NumberFormatException){
+            null
+            Toast.makeText(this, "Enter Some Number", Toast.LENGTH_SHORT).show()
         }
     }
 }
